@@ -6,6 +6,7 @@ Vue.use(Router);
 const dayChart = () => import('../pages/day-chart/dayChart.vue');
 const weekChart = () => import('../pages/week-chart/weekChart.vue');
 const monthChart = () => import('../pages/month-chart/monthChart.vue');
+const addText = () => import('../pages/add-text/add-text.vue');
 
 export default new Router({
   routes: [
@@ -25,5 +26,9 @@ export default new Router({
       path: '/month',
       component: monthChart,
     },
+    {
+      path: '/add-text',
+      component: addText,
+    }
   ]
 });

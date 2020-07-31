@@ -1,5 +1,6 @@
 const state = {
-  date1: ''
+  scheduleText: [],
+  isShow: false,
 };
 
 export default state;

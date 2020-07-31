@@ -1,26 +1,30 @@
 <template>
   <div>
-    <van-cell is-link title="基础用法" @click="show = true" />
-    <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
+    <currentDate :currentMonth="currentMonth" />
+    <vue-hash-calendar
+      :visible="true"
+      :isShowAction="false"
+      :disabledWeekView="true"
+      @change="change"
+    ></vue-hash-calendar>
   </div>
 </template>
 
+
 <script>
 
-  import { Toast } from 'vant';
+  import { getCurrentDate } from '../../common/mixin';
+  import currentDate from '../../components/current-date/current-date.vue';
 
   export default {
     name: 'weekChart',
+    mixins: [getCurrentDate],
+    components: {
+      currentDate
+    },
     data() {
       return {
-        show: false,
-        actions: [{ name: '选项一' }, { name: '选项二' }, { name: '选项三' }],
-      }
-    },
-    methods: {
-      onSelect(item) {
-        this.show = false;
-        Toast(item.name);
+        currentMonth: '',
       }
     }
   }

@@ -1,17 +1,30 @@
 <template>
   <div>
-    <span>这是 </span>{{ date || '--' }}
+    <currentDate :currentMonth="currentMonth" />
+    <vue-hash-calendar
+      :visible="true"
+      :isShowAction="false"
+      :disabledWeekView="true"
+      @change="change"
+    ></vue-hash-calendar>
   </div>
 </template>
 
 <script>
 
-  import { mapState } from 'vuex';
+  import { getCurrentDate } from '../../common/mixin';
+  import currentDate from '../../components/current-date/current-date.vue';
 
   export default {
     name: 'monthChart',
-    computed: {
-      ...mapState(['date'])
+    mixins: [getCurrentDate],
+    components: {
+      currentDate
+    },
+    data() {
+      return {
+        currentMonth: '',
+      }
     }
   }
 </script>

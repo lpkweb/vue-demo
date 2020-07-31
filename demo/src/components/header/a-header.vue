@@ -17,10 +17,12 @@
 <style scope lang="less" rel="stylesheet/less">
   .header-wrap {
     width: 100%;
-    height: 64px;
+    height: 60px;
     background-color: #366CB3;
-    line-height: 64px;
+    line-height: 60px;
     text-align: center;
+    // position: fixed;
+    // top: 0;
     .back {
       width: 20px;
       height: 20px;

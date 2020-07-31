@@ -2,7 +2,9 @@
   <div id="app">
     <a-header />
     <h-nav />
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -24,6 +26,12 @@ export default {
   body,ul,li,ol,dl,dd,h1,h2,h3,h4,h5,h6,input,p {
     margin: 0;
   }
+  body, html {
+    height: 100%;
+  }
+  /* body {
+    overflow: hidden;
+  } */
   ul, ol {
     padding: 0;
   }

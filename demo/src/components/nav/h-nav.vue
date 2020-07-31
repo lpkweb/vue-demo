@@ -19,6 +19,9 @@
   .nav {
     display: flex;
     justify-content: space-around;
+    // position: fixed;
+    // top: 60px;
+    // margin-bottom: 60px;
     div {
       padding-top: 18px;
       padding-bottom: 10px;
