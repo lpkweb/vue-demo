@@ -6,6 +6,7 @@
       :isShowAction="false"
       :disabledWeekView="true"
       @change="change"
+      :markDate="[{color: 'green', date: ['2020/08/02']}]"
     ></vue-hash-calendar>
   </div>
 </template>

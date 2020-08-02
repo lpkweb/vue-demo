@@ -1,21 +1,25 @@
 <template>
   <div>
-    <div class="add-schedule" @click="clickAddSchedule">再次点击新建日程</div>
+    <div class="add-schedule" @click.stop="clickAddSchedule">再次点击新建日程</div>
   </div>
 </template>
 
 <script>
 
   import * as types from  '../../store/constants';
+  import { mapMutations } from 'vuex';
 
   export default {
     name: 'addSchedule',
     methods: {
       clickAddSchedule() {
-        this.$store.commit(types.IS_SHOW, false);
+        this.isShow(false);
         this.$router.push('/add-text');
-      }
-    }
+      },
+      ...mapMutations({
+        isShow: types.IS_SHOW
+      })
+    },
   }
 </script>
 

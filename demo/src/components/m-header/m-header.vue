@@ -8,7 +8,7 @@
 <script>
 
   export default {
-    name: 'header',
+    name: 'm-header',
 
   }
 
@@ -21,8 +21,6 @@
     background-color: #366CB3;
     line-height: 60px;
     text-align: center;
-    // position: fixed;
-    // top: 0;
     .back {
       width: 20px;
       height: 20px;

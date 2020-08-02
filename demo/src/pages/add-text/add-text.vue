@@ -12,6 +12,7 @@
 <script>
 
   import * as types from '../../store/constants';
+  import { mapMutations, mapState } from 'vuex';
 
   export default {
     name: 'addText',
@@ -20,19 +21,25 @@
         text: '',
       }
     },
+    computed: {
+      ...mapState(['scheduleText'])
+    },
     methods: {
       clickSubmit() {
         if (!this.text) {
           alert('请输入填写的内容');
           return;
         }
-        const textArr = [...this.$store.state.scheduleText, this.text];
-        this.$store.commit(types.SAVE_SCHEDULE_TEXT, textArr);
+        const textArr = [...this.scheduleText, this.text];
+        this.saveScheduleText(textArr);
         this.clickBack();
       },
       clickBack() {
         this.$router.back();
-      }
+      },
+      ...mapMutations({
+        saveScheduleText: types.SAVE_SCHEDULE_TEXT
+      })
     }
   }
 </script>

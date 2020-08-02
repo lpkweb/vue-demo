@@ -12,8 +12,8 @@
       ></vue-hash-calendar>
       <div class="horizonLine" @click="clickShrink"></div>
     </div>
-    <Time :times="times" />
-    <div v-for="(item, index) of scheduleText" :key="index">{{item}}</div>
+    <m-time :times="times" />
+    <div v-for="(item, index) in scheduleText" :key="index">{{item}}</div>
   </div>
 </template>
 
@@ -21,16 +21,18 @@
 
   import axios from 'axios';
   import currentDate from '../../components/current-date/current-date.vue';
-  import Time from '../../components/time/time.vue';
+  import MTime from '../../components/m-time/m-time.vue';
   import { getCurrentDate } from '../../common/mixin';
   import { mapState } from 'vuex';
+
+  const BACK_H = 20;
 
   export default {
     name: 'dayChart',
     mixins: [getCurrentDate],
     components: {
       currentDate,
-      Time
+      MTime
     },
     data() {
       return {
@@ -55,7 +57,7 @@
       setCalendarBoxHeight() {
         setTimeout(() => {
           const height = this.$refs.hashCalendar.calendarContentHeight;
-          this.$refs.calendarBox.style.height = `${height + 32}px`;
+          this.$refs.calendarBox.style.height = `${height + BACK_H}px`;
         }, 20);
       },
       touchend() {
@@ -65,10 +67,9 @@
         this.setCalendarBoxHeight();
         this.isShowWeekView = !this.isShowWeekView;
       },
-      getTimes() {
-        axios.get('/api/times.json').then(({ data }) => { 
-          this.times = data.datas || [];
-         });
+      async getTimes() {
+        const { data: { datas } } = await axios.get('/api/times.json');
+        this.times = datas || [];
       },
     },
   }

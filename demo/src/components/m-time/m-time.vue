@@ -15,10 +15,10 @@
 
   import AddSchedule from '../add-schedule/add-schedule.vue';
   import * as types from  '../../store/constants';
-  import { mapState } from 'vuex';
+  import { mapState, mapMutations } from 'vuex';
 
   export default {
-    name: 'time',
+    name: 'm-time',
     components: {
       AddSchedule,
     },
@@ -45,8 +45,11 @@
       },
       // 改变浮层的显示
       changeShowState(flag) {
-        this.$store.commit(types.IS_SHOW, flag);
-      }
+        this.isShowTip(flag);
+      },
+      ...mapMutations({
+        isShowTip: types.IS_SHOW
+      })
     }
   }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <a-header />
-    <h-nav />
+    <m-header />
+    <Tab />
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
@@ -10,14 +10,14 @@
 
 <script>
 
- import AHeader from './components/header/a-header.vue';
- import HNav from './components/nav/h-nav.vue';
+ import MHeader from './components/m-header/m-header.vue';
+ import Tab from './components/tab/tab.vue';
 
 export default {
   name: 'App',
   components: {
-    AHeader,
-    HNav,
+    MHeader,
+    Tab,
   }
 }
 </script>
@@ -29,9 +29,6 @@ export default {
   body, html {
     height: 100%;
   }
-  /* body {
-    overflow: hidden;
-  } */
   ul, ol {
     padding: 0;
   }
@@ -41,4 +38,5 @@ export default {
   li {
     list-style: none;
   }
+
 </style>
