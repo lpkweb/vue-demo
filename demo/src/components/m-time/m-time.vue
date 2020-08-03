@@ -98,6 +98,9 @@
       vertical-align: top;
       margin-right: 5px;
     }
+    .add-schedule {
+      z-index: 999;
+    }
     .line {
       display: inline-block;
       vertical-align: top;
@@ -114,6 +117,7 @@
           padding-top: 13px;
           padding-left: 12px;
           li {
+            position: relative;
             width: 100%;
             color: rgba(102,102,102,1);
             font-size: 14px;
@@ -124,6 +128,16 @@
               padding-bottom: 10px;
               margin-bottom: 10px;
             }
+          }
+          li::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: -13px;
+            width: 15px;
+            height: 100%;
+            padding-top: 13px;
+            background-color: rgba(226,243,255,1);
           }
         }
       }
