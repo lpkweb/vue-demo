@@ -13,6 +13,7 @@
 
   import * as types from '../../store/constants';
   import { mapMutations, mapState } from 'vuex';
+  import { Schedule } from '../../common/schedule';
 
   export default {
     name: 'addText',
@@ -30,11 +31,35 @@
           alert('请输入填写的内容');
           return;
         }
-        const textArr = [...this.scheduleText, this.text];
-        this.saveScheduleText(textArr);
+        const { textId } = this.$route.query;
+
+        const scheduleTextArr = Object.assign([], this.scheduleText);
+
+        const textIds = scheduleTextArr.map(item => item.textId);
+
+        if (textIds.includes(textId)) {
+          scheduleTextArr.forEach(item => {
+            if (item.textId === textId) {
+              item.textArr = [...item.textArr, this.text];
+            }
+          });
+        } else {
+          scheduleTextArr.push(new Schedule({
+            textId,
+            textArr: [this.text]
+          }));
+        }
+
+        this.saveText(scheduleTextArr);
+        
+      },
+      saveText(newScheduleText) {
+        this.saveScheduleText(newScheduleText);
+        this.text = '';
         this.clickBack();
       },
       clickBack() {
+        this.text = '';
         this.$router.back();
       },
       ...mapMutations({

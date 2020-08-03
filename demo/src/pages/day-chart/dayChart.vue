@@ -13,7 +13,6 @@
       <div class="horizonLine" @click="clickShrink"></div>
     </div>
     <m-time :times="times" />
-    <div v-for="(item, index) in scheduleText" :key="index">{{item}}</div>
   </div>
 </template>
 
@@ -23,7 +22,6 @@
   import currentDate from '../../components/current-date/current-date.vue';
   import MTime from '../../components/m-time/m-time.vue';
   import { getCurrentDate } from '../../common/mixin';
-  import { mapState } from 'vuex';
 
   const BACK_H = 20;
 
@@ -49,9 +47,6 @@
     },
     mounted() {
       this.setCalendarBoxHeight();
-    },
-    computed: {
-      ...mapState(['scheduleText'])
     },
     methods: {
       setCalendarBoxHeight() {
