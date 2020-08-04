@@ -33,7 +33,7 @@
         }
         const { textId } = this.$route.query;
 
-        const scheduleTextArr = Object.assign([], this.scheduleText);
+        const scheduleTextArr = [...this.scheduleText];
 
         const textIds = scheduleTextArr.map(item => item.textId);
 

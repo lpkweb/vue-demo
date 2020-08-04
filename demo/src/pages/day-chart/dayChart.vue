@@ -63,8 +63,8 @@
         this.isShowWeekView = !this.isShowWeekView;
       },
       async getTimes() {
-        const { data: { datas } } = await axios.get('/api/times.json');
-        this.times = datas || [];
+        const { data: { datas = [] } } = await axios.get('/api/times.json');
+        this.times = datas;
       },
     },
   }

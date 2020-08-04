@@ -1,6 +1,6 @@
 export class Schedule {
-  constructor({ textId, textArr }) {
+  constructor({ textId, textArr = [] }) {
     this.textId = textId;
-    this.textArr = textArr || [];
+    this.textArr = textArr;
   }
 }
